@@ -4,6 +4,7 @@
 vim.api.nvim_set_keymap("n", "<Leader>ce", [[:!leptosfmt %<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Leader>ct", [[:!cargo test<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Leader>cc", [[:!cargo run<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>cb", [[:!cargo build<CR>]], { noremap = true, silent = true })
 -- supposed to run test on file
 --vim.api.nvim_set_keymap( "n", "<leader>ct", [[:lua require("neotest").run.run(vim.fn.expand("%"))<CR>]], { noremap = true, silent = true })
 return {
@@ -114,6 +115,10 @@ return {
               procMacro = {
                 enable = true,
                 ignored = {
+                  ["leptos_macro"] = {
+                    --"component",--
+                    "server",
+                  },
                   ["async-trait"] = { "async_trait" },
                   ["napi-derive"] = { "napi" },
                   ["async-recursion"] = { "async_recursion" },
