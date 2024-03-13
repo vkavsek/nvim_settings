@@ -9,6 +9,7 @@ vim.cmd("filetype plugin indent on")
 vim.g.loaded_perl_provider = 0
 
 require("colorizer").setup()
+require("lspconfig").sqlls.setup({})
 
 -- setup must be called before loading
 vim.cmd.colorscheme("gruvbox")
