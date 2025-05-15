@@ -1,0 +1,79 @@
+{
+  "title": {
+    "prefix": "title",
+    "description": "Commented title",
+    "body": [
+      "// ###################################",
+      "// -> \t${1:TITLE}",
+      "// ###################################"
+    ]
+  },
+
+  "[R]ust [Er]ror": {
+    "prefix": "rer",
+    "description": "Rust Error Boilerplate",
+    "body": [
+      "#[derive(Debug)]",
+      "pub enum Error {",
+      "\t${1://TODO:}",
+      "}\n",
+      "// Error Boilerplate",
+      "impl core::fmt::Display for Error {",
+      "\tfn fmt(&self, fmt: &mut core::fmt::Formatter) -> core::result::Result<(), core::fmt::Error> {",
+      "\t\twrite!(fmt, \"{self:?}\")",
+      "\t}",
+      "}\n",
+      "impl std::error::Error for Error {}"
+    ]
+  },
+
+  "[Er]ror a[n]d [Re]sult": {
+    "prefix": "ernre",
+    "description": "Rust Result & Error Boilerplate",
+    "body": [
+      "pub type Result<T> = core::result::Result<T, Error>;\n",
+      "#[derive(Debug)]",
+      "pub enum Error {",
+      "\t${1://TODO:}",
+      "}\n",
+      "// Error Boilerplate",
+      "impl core::fmt::Display for Error {",
+      "\tfn fmt(&self, fmt: &mut core::fmt::Formatter) -> core::result::Result<(), core::fmt::Error> {",
+      "\t\twrite!(fmt, \"{self:?}\")",
+      "\t}",
+      "}\n",
+      "impl std::error::Error for Error {}"
+    ]
+  },
+
+  "Tests Module": {
+    "prefix": "testmod",
+    "description": "Create a tests module",
+    "body": [
+      "#[cfg(test)]",
+      "mod tests {",
+      "\tuse super::*;",
+      "\tuse anyhow::Result;\n",
+      "\t${1}",
+      "}"
+    ]
+  },
+
+  "Tokio Main Function": {
+    "prefix": "tokiomain",
+    "description": "Create Tokio main function",
+    "body": ["#[tokio::main]", "async fn main() {", "\t${1:// TODO:}", "}"]
+  },
+
+  "Tokio Test Function": {
+    "prefix": "tokiotest",
+    "description": "Create a Tokio test fn",
+    "body": [
+      "#[tokio::test]",
+      "async fn ${1:name}() -> Result<()> {",
+      "\t${2:// TODO:}\n",
+      "\tOk(())",
+      "}"
+    ]
+  }
+}
