@@ -3,6 +3,12 @@
 Personal NEOVIM configuration using starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
 Refer to the [documentation](https://lazyvim.github.io/installation).
 
+## Markdown linting
+
+Markdown line length is unlimited in Neovim: `.markdownlint.jsonc` disables
+MD013 for both linting and formatting. Project configs can override this default.
+Restart Neovim after changing the plugin configuration.
+
 ## blink.cmp (snippets) notes
 
 Currently uses blink.cmp for snippets.
