@@ -37,6 +37,11 @@ Run the host-independent checks from this configuration directory:
 nvim --headless -u NONE -i NONE -l tests/wsl.lua
 ```
 
+## Justfiles
+
+[vim-just](https://github.com/NoahTheDuke/vim-just) provides syntax highlighting
+and loads automatically for the `just` filetype.
+
 ## Markdown linting
 
 Markdown line length is unlimited in Neovim: `.markdownlint.jsonc` disables
