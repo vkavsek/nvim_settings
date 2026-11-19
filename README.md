@@ -3,6 +3,25 @@
 Personal NEOVIM configuration using starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
 Refer to the [documentation](https://lazyvim.github.io/installation).
 
+## Clipboard over SSH
+
+Restart Neovim in your SSH session, yank with `yy` or Visual mode `y`, then
+paste into an app on your local machine. Your local terminal needs OSC 52
+clipboard writes enabled. Inside tmux, Neovim uses tmux's clipboard command
+(tmux 3.2+). Normal `p` still pastes from Neovim's registers. To paste from the
+local clipboard, use your terminal's paste shortcut in Insert mode.
+
+If copying from a tmux pane on the SSH host fails, run `tmux info | rg 'Ms:'`
+in that pane. If `Ms` is missing, add
+`set -as terminal-features ',YOUR_TERM:clipboard'` to your tmux config. Replace
+`YOUR_TERM` with the value of `$TERM` from outside that tmux server. Run
+`tmux source-file ~/.tmux.conf` and reattach. If you launched SSH from tmux on
+your local machine, its configuration needs `set -s set-clipboard on` and a
+working `Ms` capability to forward OSC 52. [tmux clipboard documentation](https://github.com/tmux/tmux/wiki/Clipboard)
+
+Run `nvim --headless -u NONE -i NONE -l tests/ssh_clipboard.lua` from this
+configuration directory to check the SSH clipboard behavior.
+
 ## Clipboard and opening links on WSL
 
 Local WSL sessions use the Windows clipboard for ordinary yanks and pastes.
@@ -15,9 +34,9 @@ application. This uses `powershell.exe` and `wslpath` on PATH, translating Linux
 paths to Windows paths automatically. Plugins using `vim.ui.open` share this
 behavior; explicit custom opener commands are respected.
 
-Restart Neovim after updating the configuration. These overrides only apply to
-local WSL sessions when the necessary tools are available. Other hosts and SSH
-sessions retain Neovim/LazyVim defaults. Windows interop must be enabled in WSL.
+Restart Neovim after updating the configuration. The Windows integration applies
+to local WSL sessions when the necessary tools are available. Windows interop
+must be enabled in WSL.
 No additional plugin or utility installation is required.
 
 Diagnostics in Neovim:
